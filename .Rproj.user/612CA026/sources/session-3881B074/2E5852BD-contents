@@ -9,15 +9,16 @@ library(stringr)
 
 DW_API <- Sys.getenv("DW_API_KEY")
 SCT_PW <- Sys.getenv("SCT_PW")
+SCT_USER <- Sys.getenv("SCT_USER")
 
 ### FUNCTIONS ###
 ## Function to retrieve CDC variant data ##
-cdc_fetch <- function(resource, format, limit, pw) {
+cdc_fetch <- function(resource, format, limit, user, pw) {
   tryCatch(
     {
       res <- GET(url = paste0("https://data.cdc.gov/resource/", resource, ".", 
                               format, "?$limit=", limit),
-                 authenticate(user = "anesta@dotdash.com", password = pw))
+                 authenticate(user = user, password = pw))
       
       stop_for_status(res)
       
@@ -125,7 +126,7 @@ VWH_color_scheme <- c("#28c4d8", "#0a383f", "#3fba6b", "#9659b2", "#fecb00",
 
 # Getting latest variant data. Limit can be altered.
 cdc_fetch(resource = "jr58-6ysp", format = "csv", 
-          limit = "500000", pw = SCT_PW) -> variant_res
+          limit = "500000", user = SCT_USER, pw = SCT_PW) -> variant_res
 
 Sys.sleep(3)
 
