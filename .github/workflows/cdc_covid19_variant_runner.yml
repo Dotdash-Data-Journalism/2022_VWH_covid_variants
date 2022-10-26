@@ -45,6 +45,9 @@ jobs:
       - run: Rscript update_covid_variant_charts.R
         env: 
           DW_API_KEY: ${{ secrets.DW_API_KEY }}
+          SCT_PW: ${{ secrets.SCT_PW }}
+          SCT_USER: ${{ secrets.SCT_USER }}
+
       # execute Rscript
       - name: Add and commit
         id: add_commit
