@@ -42,7 +42,7 @@ jobs:
       # - run: sudo apt install libmagick++-dev
       # install c++ dependencies and install necessary packages
       - run: R -e 'renv::restore()'
-      - run: Rscript covid19_vax_uninsurance.R
+      - run: Rscript update_covid_variant_charts.R
         env: 
           DW_API_KEY: ${{ secrets.DW_API_KEY }}
       # execute Rscript
