@@ -300,11 +300,10 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.16.0",
-      "OS_type": NA,
+      "Version": "0.17.0",
+      "OS_type": null,
       "Repository": "CRAN",
-      "Source": "Repository",
-      "Requirements": []
+      "Source": "Repository"
     },
     "rlang": {
       "Package": "rlang",
