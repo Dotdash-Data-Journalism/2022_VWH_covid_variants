@@ -126,7 +126,7 @@ VWH_color_scheme <- c("#28c4d8", "#0a383f", "#3fba6b", "#9659b2", "#fecb00",
 
 # Getting latest variant data. Limit can be altered.
 cdc_fetch(resource = "jr58-6ysp", format = "csv", 
-          limit = "500000", user = SCT_USER, pw = SCT_PW) -> variant_res
+          limit = "5000000", user = SCT_USER, pw = SCT_PW) -> variant_res
 
 Sys.sleep(3)
 
@@ -203,17 +203,23 @@ hhsRegions <- tibble(
 )
 
 variant_data %>% 
-  filter(week_ending == max(week_ending)) -> variant_data_latest
+  group_by(usa_or_hhsregion) %>% 
+  summarize(max_date = max(week_ending)) %>% 
+  pull(max_date) %>% 
+  min(., na.rm = T) -> most_recent_week
+
+variant_data %>% 
+  filter(week_ending == most_recent_week) -> variant_data_latest
 
 variant_data_latest %>% 
-  filter(usa_or_hhsregion == "USA") %>% 
+  filter(usa_or_hhsregion == "USA", creation_date == min(creation_date)) %>% 
   slice_max(n = 3, order_by = share) %>% 
   pull(variant) -> map_viz_variants
 
 chart_ids <- c("Ha3XE", "tbbMo", "3qNe5")
   
 variant_data_latest %>%   
-  filter(week_ending == max(week_ending), 
+  filter(week_ending == most_recent_week, creation_date == min(creation_date),
          usa_or_hhsregion != "USA", variant %in% map_viz_variants) %>% 
   select(usa_or_hhsregion, week_ending, variant, share) %>% 
   rename(ID = usa_or_hhsregion, day_of_week_end = week_ending) %>% 

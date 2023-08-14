@@ -3,7 +3,7 @@
     "path": "~/Documents/health/verywell_health/2022_VWH_covid_variants/update_covid_variant_charts.R",
     "project_path": "update_covid_variant_charts.R",
     "type": "r_source",
-    "hash": "3535518708",
+    "hash": "3154856816",
     "contents": "",
     "dirty": false,
     "created": 1666800631432.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "179,33",
-        "scrollLine": "207"
+        "cursorPosition": "258,70",
+        "scrollLine": "235"
     },
     "folds": "",
-    "lastKnownWriteTime": 1666806255,
+    "lastKnownWriteTime": 1692046579,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1666806255129,
+    "last_content_update": 1692046579243,
     "read_only": false,
     "read_only_alternatives": []
 }
