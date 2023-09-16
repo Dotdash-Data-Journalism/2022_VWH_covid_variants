@@ -1,4 +1,4 @@
-ID,day_of_week_end,XBB.2.3,States
-Region 2,2023-08-05,8.993001282215118,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
-Region 4,2023-08-05,9.538121521472931,"Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee"
-Region 9,2023-08-05,12.809306383132935,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
+ID,day_of_week_end,XBB.1.16,States
+Region 2,2023-08-19,8.032537996768951,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
+Region 4,2023-08-19,10.255586355924606,"Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee"
+Region 9,2023-08-19,12.887005507946014,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
