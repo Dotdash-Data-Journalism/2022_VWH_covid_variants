@@ -1,9 +1,8 @@
-ID,day_of_week_end,HV.1,States
-Region 2,2023-09-30,13.648129999637604,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
-Region 3,2023-09-30,15.412846207618713,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
-Region 4,2023-09-30,15.47403335571289,"Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee"
-Region 5,2023-09-30,12.092767655849457,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
-Region 6,2023-09-30,8.277121186256409,"Arkansas, Louisiana, New Mexico, Oklahoma, and Texas"
-Region 7,2023-09-30,17.029209434986115,"Iowa, Kansas, Missouri, and Nebraska"
-Region 8,2023-09-30,9.982853382825851,"Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming"
-Region 9,2023-09-30,8.264639973640442,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
+ID,day_of_week_end,FL.1.5.1,States
+Region 2,2023-10-14,23.74609410762787,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
+Region 3,2023-10-14,13.65712583065033,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
+Region 4,2023-10-14,10.107926279306412,"Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee"
+Region 5,2023-10-14,9.969141334295273,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
+Region 7,2023-10-14,8.479170501232147,"Iowa, Kansas, Missouri, and Nebraska"
+Region 8,2023-10-14,9.971150010824203,"Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming"
+Region 9,2023-10-14,8.182752877473831,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
