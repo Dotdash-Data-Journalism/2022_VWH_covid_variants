@@ -1,7 +1,5 @@
 ID,day_of_week_end,EG.5,States
-Region 2,2023-11-11,19.7964146733284,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
-Region 3,2023-11-11,18.45574527978897,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
-Region 4,2023-11-11,18.71906667947769,"Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee"
-Region 5,2023-11-11,21.228697896003723,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
-Region 8,2023-11-11,24.117478728294373,"Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming"
-Region 9,2023-11-11,28.227710723876953,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
+Region 2,2023-11-25,10.542450100183487,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
+Region 3,2023-11-25,12.137805670499802,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
+Region 5,2023-11-25,13.020606338977814,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
+Region 9,2023-11-25,18.38080585002899,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
