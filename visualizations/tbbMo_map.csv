@@ -1,7 +1,7 @@
-ID,day_of_week_end,JN.1,States
-Region 2,2023-12-09,31.725114583969116,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
-Region 3,2023-12-09,14.548955857753754,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
-Region 5,2023-12-09,16.890323162078857,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
-Region 7,2023-12-09,26.010575890541077,"Iowa, Kansas, Missouri, and Nebraska"
-Region 8,2023-12-09,16.635707020759583,"Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming"
-Region 9,2023-12-09,15.735818445682526,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
+ID,day_of_week_end,HV.1,States
+Region 2,2023-12-23,17.43672341108322,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
+Region 3,2023-12-23,25.60482621192932,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
+Region 5,2023-12-23,23.739351332187653,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
+Region 7,2023-12-23,28.41806411743164,"Iowa, Kansas, Missouri, and Nebraska"
+Region 8,2023-12-23,24.145396053791046,"Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming"
+Region 9,2023-12-23,22.88515716791153,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
