@@ -1,7 +1,8 @@
-ID,day_of_week_end,JD.1.1,States
-Region 2,2024-01-20,1.0894881561398506,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
-Region 3,2024-01-20,2.1317606791853905,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
-Region 4,2024-01-20,1.9863635301589966,"Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee"
-Region 5,2024-01-20,1.903848722577095,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
-Region 7,2024-01-20,0.8819879963994026,"Iowa, Kansas, Missouri, and Nebraska"
-Region 9,2024-01-20,1.5948949381709099,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
+ID,day_of_week_end,JG.3,States
+Region 1,2024-02-03,0.7252821233123541,"Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, and Vermont"
+Region 2,2024-02-03,0.8470685221254826,"New Jersey, New York, Puerto Rico, and the Virgin Islands"
+Region 3,2024-02-03,1.1483258567750454,"Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia"
+Region 4,2024-02-03,1.6425063833594322,"Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee"
+Region 5,2024-02-03,1.1301527731120586,"Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin"
+Region 7,2024-02-03,0.5552186165004969,"Iowa, Kansas, Missouri, and Nebraska"
+Region 9,2024-02-03,0.882251001894474,"Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau"
