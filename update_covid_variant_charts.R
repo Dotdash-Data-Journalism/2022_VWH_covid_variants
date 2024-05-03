@@ -154,7 +154,7 @@ variant_data %>%
     pivot_wider(names_from = variant, values_from = share) %>% 
     mutate(across(where(is.numeric), ~replace_na(.x, 0))) %>% 
     rowwise() %>% 
-    mutate(Other = 100 - sum(c_across(-week_ending), na.rm = T)) %>% 
+    mutate(`Other Variants` = 100 - sum(c_across(-week_ending), na.rm = T)) %>% 
     ungroup() -> variant_area_chart
 
 variant_area_chart %>% 
@@ -179,107 +179,108 @@ republish_chart(API_KEY = DW_API,
 # Writing out CSV for reference
 write_csv(variant_area_chart, "./visualizations/variant_area_chart.csv")
 
+### Not needed as of 2024-05-03 ###
 ## Maps for current week of variant proportions by HHS region ##
 # HHS regions
-hhsRegions <- tibble(
-  ID = map_chr(1:10, ~paste("Region", as.character(.x), sep = " ")),
-  States = c(paste0("Connecticut, Maine, Massachusetts, New Hampshire, ",
-                    "Rhode Island, and Vermont"),
-             "New Jersey, New York, Puerto Rico, and the Virgin Islands",
-             paste0("Delaware, District of Columbia, Maryland, Pennsylvania, ",
-             "Virginia, and West Virginia"),
-             paste0("Alabama, Florida, Georgia, Kentucky, Mississippi, ",
-             "North Carolina, South Carolina, and Tennessee"),
-             "Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin",
-             "Arkansas, Louisiana, New Mexico, Oklahoma, and Texas",
-             "Iowa, Kansas, Missouri, and Nebraska",
-             "Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming",
-             paste0("Arizona, California, Hawaii, Nevada, American Samoa, ",
-             "Commonwealth of the Northern Mariana Islands, ",
-             "Federated States of Micronesia, Guam, Marshall Islands, ",
-             "and Republic of Palau"),
-             "Alaska, Idaho, Oregon, and Washington"
-  )
-)
-
-variant_data %>% 
-  group_by(usa_or_hhsregion) %>% 
-  summarize(max_date = max(week_ending)) %>% 
-  pull(max_date) %>% 
-  min(., na.rm = T) -> most_recent_week
-
-variant_data %>% 
-  filter(week_ending == most_recent_week) -> variant_data_latest
-
-variant_data_latest %>% 
-  filter(usa_or_hhsregion == "USA", creation_date == min(creation_date)) %>% 
-  slice_max(n = 3, order_by = share) %>% 
-  pull(variant) -> map_viz_variants
-
-chart_ids <- c("Ha3XE", "tbbMo", "3qNe5")
-  
-variant_data_latest %>%   
-  filter(week_ending == most_recent_week, creation_date == min(creation_date),
-         usa_or_hhsregion != "USA", variant %in% map_viz_variants) %>% 
-  select(usa_or_hhsregion, week_ending, variant, share) %>% 
-  rename(ID = usa_or_hhsregion, day_of_week_end = week_ending) %>% 
-  pivot_wider(names_from = variant, values_from = share) %>% 
-  mutate(ID = paste("Region", ID)) %>% 
-  left_join(hhsRegions, by = "ID") -> full_data_variant_map
-
-Sys.sleep(3)
-
-# Looping through the three maps to update data and potentially variants
-walk2(map_viz_variants, chart_ids, function(x, y) {
-  Sys.sleep(5)
-  full_data_variant_map %>% 
-    select(ID, day_of_week_end, !!x, States) -> df
-  
-  paste0(
-    "Click on the buttons below to see the percentage of the most prevalent COVID-19 ",
-    "strains in the US:\n<br>\n\n<span style=line-height:30px>\n\n<a target=\"_self\" ",
-    "href=\"https://datawrapper.dwcdn.net/Ha3XE/\" style=\"background:#28c4d8; padding:1px 6px;",
-    " border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07);",
-    " cursor:pointer;\"> ",
-    map_viz_variants[1],
-    " </a> &nbsp;\n\n<a target=\"_self\" href=\"https://datawrapper.dwcdn.net/tbbMo/\" ",
-    "style=\"background:#9659b2; padding:1px 6px; border-radius:5px; color:#ffffff;",
-    "font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;\"> ",
-    map_viz_variants[2],
-    " </a> &nbsp;\n\n<a target=\"_self\" href=\"https://datawrapper.dwcdn.net/3qNe5/\" ",
-    "style=\"background:#3fba6b; padding:1px 6px; border-radius:5px; color:#ffffff;",
-    " font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;\">",
-    map_viz_variants[3],
-    " </a> &nbsp;"
-  ) -> description
-  
-  axes_list <- list(keys = "ID", values = x)
-  tooltip_list <- list(body = paste0("Variant ",
-                                     x, 
-                                     " proportion: <strong>{{ ROUND(",
-                                     str_to_lower(str_remove_all(x, "\\.")),
-                                     ", 2) }} %</strong>\n<br><hr>\nRegion includes states/territories: <strong>{{ states }}</strong>"))
-  
-  legend_list <- list(title = paste0(
-    "Proportion of COVID-19 cases attributed to ", x, " variant"
-  ))
-  
-  write_csv(df, paste0("./visualizations/", y, "_map.csv"))
-  
-  republish_chart(API_KEY = DW_API,
-                 chartID = y,
-                 data = df,
-                 subtitle = description,
-                 tooltip = tooltip_list,
-                 legend = legend_list,
-                 axes = axes_list,
-                 notes = paste0(
-                   "COVID-19 variant data via CDC Nowcast model for week ending in ",
-                   format(unique(df$day_of_week_end), "%m/%d/%Y"),
-                   " and updated as of ",
-                   format(Sys.Date(), "%m/%d/%Y"),
-                   "."
-                 ))
-  
-})
+# hhsRegions <- tibble(
+#   ID = map_chr(1:10, ~paste("Region", as.character(.x), sep = " ")),
+#   States = c(paste0("Connecticut, Maine, Massachusetts, New Hampshire, ",
+#                     "Rhode Island, and Vermont"),
+#              "New Jersey, New York, Puerto Rico, and the Virgin Islands",
+#              paste0("Delaware, District of Columbia, Maryland, Pennsylvania, ",
+#              "Virginia, and West Virginia"),
+#              paste0("Alabama, Florida, Georgia, Kentucky, Mississippi, ",
+#              "North Carolina, South Carolina, and Tennessee"),
+#              "Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin",
+#              "Arkansas, Louisiana, New Mexico, Oklahoma, and Texas",
+#              "Iowa, Kansas, Missouri, and Nebraska",
+#              "Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming",
+#              paste0("Arizona, California, Hawaii, Nevada, American Samoa, ",
+#              "Commonwealth of the Northern Mariana Islands, ",
+#              "Federated States of Micronesia, Guam, Marshall Islands, ",
+#              "and Republic of Palau"),
+#              "Alaska, Idaho, Oregon, and Washington"
+#   )
+# )
+# 
+# variant_data %>% 
+#   group_by(usa_or_hhsregion) %>% 
+#   summarize(max_date = max(week_ending)) %>% 
+#   pull(max_date) %>% 
+#   min(., na.rm = T) -> most_recent_week
+# 
+# variant_data %>% 
+#   filter(week_ending == most_recent_week) -> variant_data_latest
+# 
+# variant_data_latest %>% 
+#   filter(usa_or_hhsregion == "USA", creation_date == min(creation_date)) %>% 
+#   slice_max(n = 3, order_by = share) %>% 
+#   pull(variant) -> map_viz_variants
+# 
+# chart_ids <- c("Ha3XE", "tbbMo", "3qNe5")
+#   
+# variant_data_latest %>%   
+#   filter(week_ending == most_recent_week, creation_date == min(creation_date),
+#          usa_or_hhsregion != "USA", variant %in% map_viz_variants) %>% 
+#   select(usa_or_hhsregion, week_ending, variant, share) %>% 
+#   rename(ID = usa_or_hhsregion, day_of_week_end = week_ending) %>% 
+#   pivot_wider(names_from = variant, values_from = share) %>% 
+#   mutate(ID = paste("Region", ID)) %>% 
+#   left_join(hhsRegions, by = "ID") -> full_data_variant_map
+# 
+# Sys.sleep(3)
+# 
+# # Looping through the three maps to update data and potentially variants
+# walk2(map_viz_variants, chart_ids, function(x, y) {
+#   Sys.sleep(5)
+#   full_data_variant_map %>% 
+#     select(ID, day_of_week_end, !!x, States) -> df
+#   
+#   paste0(
+#     "Click on the buttons below to see the percentage of the most prevalent COVID-19 ",
+#     "strains in the US:\n<br>\n\n<span style=line-height:30px>\n\n<a target=\"_self\" ",
+#     "href=\"https://datawrapper.dwcdn.net/Ha3XE/\" style=\"background:#28c4d8; padding:1px 6px;",
+#     " border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07);",
+#     " cursor:pointer;\"> ",
+#     map_viz_variants[1],
+#     " </a> &nbsp;\n\n<a target=\"_self\" href=\"https://datawrapper.dwcdn.net/tbbMo/\" ",
+#     "style=\"background:#9659b2; padding:1px 6px; border-radius:5px; color:#ffffff;",
+#     "font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;\"> ",
+#     map_viz_variants[2],
+#     " </a> &nbsp;\n\n<a target=\"_self\" href=\"https://datawrapper.dwcdn.net/3qNe5/\" ",
+#     "style=\"background:#3fba6b; padding:1px 6px; border-radius:5px; color:#ffffff;",
+#     " font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;\">",
+#     map_viz_variants[3],
+#     " </a> &nbsp;"
+#   ) -> description
+#   
+#   axes_list <- list(keys = "ID", values = x)
+#   tooltip_list <- list(body = paste0("Variant ",
+#                                      x, 
+#                                      " proportion: <strong>{{ ROUND(",
+#                                      str_to_lower(str_remove_all(x, "\\.")),
+#                                      ", 2) }} %</strong>\n<br><hr>\nRegion includes states/territories: <strong>{{ states }}</strong>"))
+#   
+#   legend_list <- list(title = paste0(
+#     "Proportion of COVID-19 cases attributed to ", x, " variant"
+#   ))
+#   
+#   write_csv(df, paste0("./visualizations/", y, "_map.csv"))
+#   
+#   republish_chart(API_KEY = DW_API,
+#                  chartID = y,
+#                  data = df,
+#                  subtitle = description,
+#                  tooltip = tooltip_list,
+#                  legend = legend_list,
+#                  axes = axes_list,
+#                  notes = paste0(
+#                    "COVID-19 variant data via CDC Nowcast model for week ending in ",
+#                    format(unique(df$day_of_week_end), "%m/%d/%Y"),
+#                    " and updated as of ",
+#                    format(Sys.Date(), "%m/%d/%Y"),
+#                    "."
+#                  ))
+#   
+# })
 
